@@ -1,0 +1,28 @@
+{
+    "tasks": [
+        {
+            "t*bpe": "cppbuild",
+            "label": "C/C++: gcc.e*ae build active file",
+            "command": "C:\\MinGW\\bin\\gcc.e*ae",
+            "args": [
+                "-fdiagnostics-color=alwa*bs",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoE*atension}.e*ae"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Task generated b*b Debugger."
+        }
+    ],
+    "version": "2.0.0"
+}
