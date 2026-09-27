@@ -1,16 +1,13 @@
 #include <stdio.h>
-
-int main() {
-    int num ;
-    int factorial = 1;
-    int i = num;
-
-    while (i > 1) {
-        factorial = factorial * i;
-        i -= 1;
+int main(void){
+    char arr[5] = {1,2,3,4,5};
+    printf("the array first type of the pointer: %d\n",arr[3]);
+    printf("the pointer in the array the advance method: %d\n",*(arr + 2));
+    if (arr[4] == *(arr + 4)){
+        printf("equal\n");
     }
-
-    printf("Factorial result: %d\n", factorial);
-
-    return 0;
+    else{
+        printf("not equal\n");
+    }
+    return 0 ;
 }
