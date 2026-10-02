@@ -1,33 +1,24 @@
 #include <stdio.h>
-//We always make sure that our code will not break if there is any Other value given to the code .
-int main(void) {
-    int arr[] = {10, 20, 30, 40, 50, 60};
-    int *ptr = arr;//creating the pointer
-    int length = sizeof(arr) / sizeof(arr[0]);//it will Automatically calculate the length of the area. 
-    int target;
-    
-    printf("the array is: ");
-    //We are using the second pointer There should not be a problem with the shadowing variable. 
-    for (int *ptr1 = arr; ptr1 < arr + length; ptr1++) {//(arr+length)==the last Stopping point. 
-        printf("%d ", *ptr1);
-    }
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
 
-    printf("\nenter the number from which do you want to found the index: ");
-    scanf("%d", &target);
-    
-    while (ptr < arr + length) {
-        if (target == *ptr) {
-            // Fix: Explicitly cast to (int) to pass through -Werror seamlessly
-            printf("the index is: %d\n", (int)(ptr - arr));//We are telling the computer that the calculation will return the integer-type data. 
-            break;
-        }
-        ptr++;
+int main() {//for not passing the parameter
+    int a;//for the integer data
+    if (scanf("%d",&a) != 1 || a <= 0){
+        return 1;//for checking if the data enter is correct or not
+    }//The written one is used for telling the machine that the code has some error. 
+    int arr[a];// we can also write the arr[] = {0}for not storing the garbage value
+    for(int i = 0 ; i < a; i++){
+        scanf("%d",&arr[i]);//for storing the data index wise
     }
-    
-    // Elite Practice: Check the condition OUTSIDE the loop to save CPU cycles
-    if (ptr == arr + length) {
-        printf("You have entered the wrong number.\n");
+    int *ptr = arr;//pointing the array
+    int sum = 0;//making the variable of the sum
+    while(ptr < arr + a){//as we know the length of the array if we dont know the length of the array 
+    //we can use the sizeof(arr)//sizeof(arr[0])
+        sum = sum + *ptr;//this will add the exiting value of the sum to index value of the pointer pointing towards the array index
+        ptr++;//Increment by 1. 
     }
-    
-    return 0;
+    printf("%d",sum);//print the output. 
+    return 0; //for telling the machine that code has run smoothly and error-free 
 }
