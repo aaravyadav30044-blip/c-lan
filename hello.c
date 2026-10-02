@@ -4,6 +4,9 @@ int main(void) {
     int arr[] = {10, 20, 30, 40, 50, 60};
     int *ptr = arr;//creating the pointer
     int length = sizeof(arr) / sizeof(arr[0]);//it will Automatically calculate the length of the area. 
+    // Why don't you make the function and use this? ###
+    // If we use this in a function, the function is very clever. They never copy the whole array.
+    //  They will only copy the memory address of the array, and this will give the error if we use it in a function. 
     int target;
     
     printf("the array is: ");
