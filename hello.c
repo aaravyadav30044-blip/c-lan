@@ -1,13 +1,33 @@
 #include <stdio.h>
-int main(void){
-    char arr[5] = {1,2,3,4,5};
-    printf("the array first type of the pointer: %d\n",arr[3]);
-    printf("the pointer in the array the advance method: %d\n",*(arr + 2));
-    if (arr[4] == *(arr + 4)){
-        printf("equal\n");
+//We always make sure that our code will not break if there is any Other value given to the code .
+int main(void) {
+    int arr[] = {10, 20, 30, 40, 50, 60};
+    int *ptr = arr;//creating the pointer
+    int length = sizeof(arr) / sizeof(arr[0]);//it will Automatically calculate the length of the area. 
+    int target;
+    
+    printf("the array is: ");
+    //We are using the second pointer There should not be a problem with the shadowing variable. 
+    for (int *ptr1 = arr; ptr1 < arr + length; ptr1++) {//(arr+length)==the last Stopping point. 
+        printf("%d ", *ptr1);
     }
-    else{
-        printf("not equal\n");
+
+    printf("\nenter the number from which do you want to found the index: ");
+    scanf("%d", &target);
+    
+    while (ptr < arr + length) {
+        if (target == *ptr) {
+            // Fix: Explicitly cast to (int) to pass through -Werror seamlessly
+            printf("the index is: %d\n", (int)(ptr - arr));//We are telling the computer that the calculation will return the integer-type data. 
+            break;
+        }
+        ptr++;
     }
-    return 0 ;
+    
+    // Elite Practice: Check the condition OUTSIDE the loop to save CPU cycles
+    if (ptr == arr + length) {
+        printf("You have entered the wrong number.\n");
+    }
+    
+    return 0;
 }
