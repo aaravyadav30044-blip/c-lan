@@ -1,24 +1,26 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdlib.h>
+int index_cal(int a){
+    int sum = 0;
+    int i = 0;
+    while(i<5){
+        // this line is wrong because in the c langugae the power(^)is Treated as XOR
+        // sum += (a%10^(i+1))/(10^i)); 
+        sum += a%10; //extract the last number 
+        //But we have the problem: we don't need the last number, but we also need the other numbers. 
+        a = a/10; // so now the last number removed untill the loop stop 
+        //like a = 10564 / 10 = 1056.4 = 1056
+        // a = 1056 / 10 = 105.6 = 105 ......
+        i++;
+    }
+    return sum;
+}
 
-int main() {//for not passing the parameter
-    int a;//for the integer data
-    if (scanf("%d",&a) != 1 || a <= 0){
-        return 1;//for checking if the data enter is correct or not
-    }//The written one is used for telling the machine that the code has some error. 
-    int arr[a];// we can also write the arr[] = {0}for not storing the garbage value
-    for(int i = 0 ; i < a; i++){
-        scanf("%d",&arr[i]);//for storing the data index wise
-    }
-    int *ptr = arr;//pointing the array
-    int sum = 0;//making the variable of the sum
-    while(ptr < arr + a){//as we know the length of the array if we dont know the length of the array 
-    //we can use the sizeof(arr)//sizeof(arr[0])
-        sum = sum + *ptr;//this will add the exiting value of the sum to index value of the pointer pointing towards the array index
-        ptr++;//Increment by 1. 
-    }
-    printf("%d",sum);//print the output. 
-    return 0; //for telling the machine that code has run smoothly and error-free 
+int main(void){
+    int a = 10564;
+    printf("%d\n",(a%100000)/10000);
+    printf("%d\n",(a%10000)/1000);
+    printf("%d\n",(a%1000)/100);
+    printf("%d\n",(a%100)/10);
+    printf("%d\n",(a%10)/1);
+    printf("%d",index_cal(a));
 }
